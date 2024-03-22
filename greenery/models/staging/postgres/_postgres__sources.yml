@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+
+  - name: postgres 
+    schema: public 
+    database: raw
+
+    tables:
+      - name: addresses
+        description: Contains users' street addresses, zipcodes, states, and countries.
+      - name: events 
+        description: Log of events.
+        loaded_at_field: created_at
+      - name: order_items
+        description: Contains list of product ID and its purchased quantity per order. 
+      - name: orders 
+        description: Contains order's detail such as user ID, address ID, order cost, shipping cost, etc. 
+      - name: products
+        description: Product Catalog of Greenery
+      - name: promos
+        description: The list of promo ID and its discount and status 
+      - name: users
+        description: Contains users' ID, first name, last name, email, and phone number.
+
