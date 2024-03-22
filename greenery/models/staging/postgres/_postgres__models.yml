@@ -1,0 +1,68 @@
+version: 2
+
+models:
+  - name: stg_addresses
+    description: Contains users' street addresses, zipcodes, states, and countries.
+    columns:
+      - name: address_id 
+        description: Unique address ID 
+        tests:
+          - unique 
+          - not_null
+      - name: address
+        description: Street address 
+      - name: zipcode
+        description: the zipcode 
+      - name: state 
+        description: address state
+      - name: country 
+        description: country
+  
+  - name: stg_events
+    description: Log of events
+    columns:
+      - name: event_id 
+        description: unique event id 
+        tests:  
+          - not_null
+          - unique
+
+  - name: stg_order_items
+    description: Contains list of product ID and its purchased quantity per order. 
+  
+  - name: stg_orders 
+    description: Contains order's detail such as user ID, address ID, order cost, shipping cost, etc. 
+    columns: 
+      - name: order_id 
+        description: Unique order ID 
+        tests: 
+          - not_null
+          - unique
+
+  - name: stg_products
+    description: Product Catalog of Greenery
+    columns: 
+      - name: product_id 
+        description: Unique product ID 
+        tests: 
+          - not_null
+          - unique
+
+  - name: stg_promos
+    description: The list of promo ID and its discount and status 
+    columns: 
+      - name: promo_id 
+        description: Unique promo ID 
+        tests: 
+          - not_null
+          - unique
+
+  - name: stg_users
+    description: Contains users' ID, first name, last name, email, and phone number.
+    columns: 
+      - name: user_id 
+        description: Unique user ID 
+        tests: 
+          - not_null
+          - unique
+  

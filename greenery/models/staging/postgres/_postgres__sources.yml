@@ -16,10 +16,12 @@ sources:
         description: Contains list of product ID and its purchased quantity per order. 
       - name: orders 
         description: Contains order's detail such as user ID, address ID, order cost, shipping cost, etc. 
+        loaded_at_field: created_at
       - name: products
         description: Product Catalog of Greenery
       - name: promos
         description: The list of promo ID and its discount and status 
       - name: users
         description: Contains users' ID, first name, last name, email, and phone number.
+        loaded_at_field: created_at
 
