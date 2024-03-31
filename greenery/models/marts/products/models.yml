@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: fct_product_daily
+    description: Contains the daily information of product's page visit and sales.
+    tests:
+      - unique:
+          column_name: "(product_id || '-' || date)"
+    columns:
+      - name: product_id  
+        description: unique identifier for product
+      - name: product_name
+        description: the name of the product
+      - name: unit_price
+        description: product's price per unit
+      - name: date
+        description: observation date (based on event's date)
+      - name: num_page_view 
+        description: number of product's detail page view on the observation date
+      - name: num_add_to_cart 
+        description: number of add to cart event per product per date
+      - name: num_order 
+        description: number of order that contains product on the observation date
+      - name: num_sold_quantity
+        description: number of sold quantity per product on the observation date
+      - name: total_before_discount
+        description: revenue (unit price x quantity) before discount
+      - name: total_after_discount
+        description: revenue (unit price x quantity) after discount
+      - name: conversion_rate
+        description: number of page view divided by number of order

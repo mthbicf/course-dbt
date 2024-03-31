@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: user_facts
+    description: Contains user's facts related to their website visit and orders.
+    columns:
+      - name: user_id 
+        description: unique identifier for user 
+        tests:
+          - unique 
+          - not_null 
+      - name: first_name
+        description: user's first name
+      - name: email 
+        description: user's email 
+      - name: user_created_date
+        description: the date when the user is created 
+      - name: last_website_visit_at 
+        description: the last time user visited the website
+      - name: num_orders 
+        description: number of orders the user has made so far 
+      - name: num_order_used_promo 
+        description: number of orders the user has made that using discount
+      - name: total_order_spend 
+        description: total order spend per user 
+      - name: total_shipping_cost 
+        description: total shipping cost per user 
+      - name: first_order_date 
+        description: first time user has ordered an order
+      - name: last_order_date 
+        description: last time user has ordered an order
+      
+      
