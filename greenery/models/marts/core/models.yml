@@ -1,0 +1,85 @@
+version: 2
+
+models:
+  - name: fct_orders 
+    description: Contains order's detail such as user ID, address ID, order cost, shipping cost, etc. 
+    columns: 
+      - name: order_id 
+        description: Unique order ID 
+        tests: 
+          - unique
+      - name: user_id 
+        description: user identifier 
+      - name: promo_id 
+        description: promo identifier 
+      - name: address_id 
+        description: address identifier 
+      - name: created_at 
+        description: the timestamp when the order is created
+      - name: order_cost 
+        description: total value of an order
+      - name: shipping_cost 
+        description: shipping cost 
+      - name: order_total 
+        description: order cost plus shipping cost 
+      - name: tracking_id 
+        description: tracking identifier
+      - name: shipping_service 
+        description: the name of shipping service
+      - name: estimated_delivery_at 
+        description: estimated delivery time
+      - name: delivered_at 
+        description: the time when the order is actually delivered
+      - name: status 
+        description: status of the order (delivered, shipped, preparing)
+
+  - name: dim_users 
+    description: Contains user's detail such as email, phone number, and address.
+    columns: 
+      - name: user_id 
+        description: Unique idenfier for user
+        tests: 
+          - unique
+      - name: first_name 
+        description: user's first name
+      - name: last_name 
+        description: user's last name
+      - name: email 
+        description: user's email
+      - name: phone_number 
+        description: user's phone number
+      - name: created_at 
+        description: the date when the user is created
+      - name: updated_at 
+        description: the date when the user data is updated
+      - name: address 
+        description: user's address
+      - name: zipcode 
+        description: zip code 
+      - name: state 
+        description: state 
+      - name: country 
+        description: country
+
+  - name: dim_products
+    description: Slowly changing dimension table for product. Tracks the changes in inventory of product.
+    tests:
+      - unique:
+          column_name: "(product_id || '-' || row_valid_from)"
+    columns:
+      - name: product_id  
+        description: unique identifier for product
+      - name: product_name
+        description: the name of the product
+      - name: unit_price
+        description: product's price per unit
+      - name: inventory 
+        description: product's inventory per recorded date range
+      - name: change_index 
+        description: index to identify how many changes have happened to the product's inventory 
+      - name: row_valid_from 
+        description: the date when the row becomes valid
+      - name: row_valid_to
+        description: the date when the row is still valid
+      - name: is_current
+        description: flag to identify if the row is the most updated data or not

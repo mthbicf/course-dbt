@@ -40,6 +40,7 @@ WITH snapshot AS (
         , is_current
     FROM adjust_row_valid_from 
 )
+
 SELECT 
     *
 FROM adjust_row_valid_to
